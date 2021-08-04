@@ -111,7 +111,7 @@
 <body>
 <script src="https://chrahman.github.io/code-editor/js/codemirror.js"></script>
   <script src="https://chrahman.github.io/code-editor/js/codemirror_jsx.js"></script>
-    <label>Book name</label>
+    <label>Assignment name</label>
     <input type="text" id="namepost" placeholder="Like cs201" autocomplete="off">
 
 <a class="dark-btn" href="javascript:void(0);" onclick="retheme()"  title="Change Theme">
@@ -125,9 +125,16 @@
         </svg></a>
     <br><br>
     <input type="radio" id="img1" name="img">
-    <label> Short Notes For Midterm</label><br>
+    <label> Assignment 1</label><br>
     <input type="radio" id="img2" name="img">
-    <label> Short Notes For Finalterm</label><br>
+    <label> Assignment 2</label><br>
+    <input type="radio" id="img3" name="img">
+    <label> Assignment 3</label>
+    <br><br>
+    <input type="radio" id="gdb1" name="img">
+    <label> GDB 1</label><br>
+    <input type="radio" id="gdb2" name="img">
+    <label> GDB 2</label>
     <br><br>
 
     <label> Download Link</label>
@@ -149,8 +156,8 @@
 <div class="separator" style="clear: both; text-align: center;">
   <br />
 </div>
-<h2 style="clear: both; text-align: left;">CS401 Short Notes For Midterm</h2>
-<div>In this Post, I have CS401 Short Notes For Midterm.&nbsp; <span face="Poppins, sans-serif" style="background-color: white; font-size: 15px;">Download CS401 <a id="cs_gd_no" href="https://www.vudaily.com/2021/07/it430-assignment-3-solution-spring-2021.html" target="_blank"> Short Notes</a> From Here. Download Moaaz past papers and Waqar's past papers and Short Notes from our website. You can Download all Books <a id="cs_gd_notes" href="https://www.vudaily.com/search/label/Short-Notes?&amp;max-results=5" rel="nofollow" target="_blank">Short Notes</a> from our website. </span>
+<h2 style="clear: both; text-align: left;">CS401 Assignment 3 Solution Spring 2021</h2>
+<div>In this Post, I have CS401 Assignment 3 Solution Spring 2021.&nbsp; <span face="Poppins, sans-serif" style="background-color: white; font-size: 15px;">Download CS401 <a id="cs_gd_no" href="https://www.vudaily.com/2021/07/it430-assignment-3-solution-spring-2021.html" target="_blank"> Assignment Solution</a> File From Here. Download Moaaz past papers and Waqar's past papers from our website. You can Download all <a id="cs_gd_notes" href="https://www.vudaily.com/search/label/Assignment-Solution-2021?&amp;max-results=5" rel="nofollow" target="_blank">assignment solutions</a> from our website. </span>
 </div>
 <div>
   <br />
@@ -193,16 +200,22 @@
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<div>We Are Here To Supply Latest Virtual University Solutions. Assignment Solutions, GDB Solution, Quiz Solution Viva Solution Midterm Past Papers, and Final term Past Papers, Short Notes. <br />
+<div>
+  <p style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;"></p>
+  <blockquote>Don't Copy-paste The Same Answer Please Make Some Changes Within The Solution File. You Have Got To Form Your Solution File By Yourself Because Everyone Cannot Submit Same Solution File Kindly Make Some Changes Otherwise Are Mark Zero. So Please Make Some Changes Within The Solution File.</blockquote>
+  <p></p>
+  <p style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;"></p>
+</div>
+<div>We Are Here To Supply Latest Virtual University Solutions. Assignment Solutions, GDB Solution, Quiz Solution Viva Solution Midterm Past Papers, and Final term Past Papers. <br />
 </div>
 <div>
   <br />
 </div>
 <div>
   <div>
-    <p>CS401 Short Notes for Midterm</p>
-    <p>Download CS401 Short Notes for Midterm</p>
-    <p>CS401 Short Notes for Midterm Preparation</p>
+    <p>CS401 Assignment 3 Solution 2021</p>
+    <p>CS401 Assignment 3 Solution 2021 download</p>
+    <p>CS401 Assignment 3 spring 2021</p>
   </div>
 </div>
 <style>
@@ -298,21 +311,48 @@
 
         var img1 = document.getElementById("img1");
         var img2 = document.getElementById("img2");
+        var img3 = document.getElementById("img3");
+        var gdb1 = document.getElementById("gdb1");
+        var gdb2 = document.getElementById("gdb2");
 
         function myFunction() {
             // replace download link
             document.getElementById("downlinkput").href = downlink.value;
+            // Change you can download
+            if (gdb1.checked || gdb2.checked) {
+            	document.getElementById("cs_gd_notes").href = "/search/label/GDB-Solution-2021?&amp;max-results=5";
+                document.getElementById("cs_gd_notes").innerHTML = "GDB Solutions";
+                document.getElementById("cs_gd_no").innerHTML = "GDB Solution";
+                
+            }
+            else {
+            	document.getElementById("cs_gd_notes").href = "/search/label/Assignment-Solution-2021?&amp;max-results=5";
+                document.getElementById("cs_gd_notes").innerHTML = "Assignment Solutions";
+                document.getElementById("cs_gd_no").innerHTML = "Assignment Solution";
+            }
 
             // check and change img
             if (img1.checked) {
-                imgsrc.src = "https://1.bp.blogspot.com/-ATjMxiHuFOM/YQprLD134cI/AAAAAAAACyM/WZLUrewGLi8X3cc4v71yg8u5Zpfo8MMwACLcBGAsYHQ/s16000/CS401%2BShort%2BNotes%2BFor%2BMidterm.webp";
-                imghref.href = "https://1.bp.blogspot.com/-ATjMxiHuFOM/YQprLD134cI/AAAAAAAACyM/WZLUrewGLi8X3cc4v71yg8u5Zpfo8MMwACLcBGAsYHQ/s16000/CS401%2BShort%2BNotes%2BFor%2BMidterm.webp";
+                imgsrc.src = "https://1.bp.blogspot.com/-2Uk3koOkwVE/YIyR1X9KbII/AAAAAAAACtA/q8XVJz0XSWAinJ5G5VVofkN8Jc3SJgE5wCLcBGAsYHQ/s16000/Assignment%2B1%2BSolution%2BSpring%2B2021.webp";
+                imghref.href = "https://1.bp.blogspot.com/-2Uk3koOkwVE/YIyR1X9KbII/AAAAAAAACtA/q8XVJz0XSWAinJ5G5VVofkN8Jc3SJgE5wCLcBGAsYHQ/s16000/Assignment%2B1%2BSolution%2BSpring%2B2021.webp";
             }
             if (img2.checked) {
-                imgsrc.src = "https://1.bp.blogspot.com/-mFfZhBwO8Ew/YQptL9X0CdI/AAAAAAAACyU/Qm7WNaygnbk3h4lJ1q_ga4_8F1uZojPdwCLcBGAsYHQ/s16000/CS401%2BShort%2BNotes%2BFor%2BFinal%2Bterm.webp";
-                imghref.href = "https://1.bp.blogspot.com/-mFfZhBwO8Ew/YQptL9X0CdI/AAAAAAAACyU/Qm7WNaygnbk3h4lJ1q_ga4_8F1uZojPdwCLcBGAsYHQ/s16000/CS401%2BShort%2BNotes%2BFor%2BFinal%2Bterm.webp";
+                imgsrc.src = "https://1.bp.blogspot.com/-WuH1hnWGD1o/YPQMtyp4HyI/AAAAAAAACxc/8SH9XAxUpHcStf679cJughIIZChprp1KQCLcBGAsYHQ/s16000/CS401%2BAssignment%2B2%2BSpring%2B2021.webp";
+                imghref.href = "https://1.bp.blogspot.com/-WuH1hnWGD1o/YPQMtyp4HyI/AAAAAAAACxc/8SH9XAxUpHcStf679cJughIIZChprp1KQCLcBGAsYHQ/s16000/CS401%2BAssignment%2B2%2BSpring%2B2021.webp";
             }
-            
+            if (img3.checked) {
+                imgsrc.src = "https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s16000/CS401%2BAssignment%2B3%2BSpring%2B2021.webp";
+                imghref.href = "https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s16000/CS401%2BAssignment%2B3%2BSpring%2B2021.webp";
+            }
+            if (gdb1.checked) {
+                imgsrc.src = "https://1.bp.blogspot.com/-zm7O4oPR8FI/YJvWXyeSIZI/AAAAAAAACuo/XmcwG0fNK-UYgj26WJbITWMJi9Xv3UMWgCLcBGAsYHQ/s16000/CS408%2BGDB%2B1%2BSolution%2BSpring%2B2021.webp";
+                imghref.href = "https://1.bp.blogspot.com/-zm7O4oPR8FI/YJvWXyeSIZI/AAAAAAAACuo/XmcwG0fNK-UYgj26WJbITWMJi9Xv3UMWgCLcBGAsYHQ/s16000/CS408%2BGDB%2B1%2BSolution%2BSpring%2B2021.webp";
+            }
+            if (gdb2.checked) {
+                imgsrc.src = "https://1.bp.blogspot.com/-lGew74YAwns/YQosrgSAEzI/AAAAAAAACyA/rlIP4lc3VfIPBKJpBH68qaaJOv9D_20rACLcBGAsYHQ/s16000/CS401%2BGDB%2B1%2BSolution%2BSpring%2B2021.webp";
+                imghref.href = "https://1.bp.blogspot.com/-lGew74YAwns/YQosrgSAEzI/AAAAAAAACyA/rlIP4lc3VfIPBKJpBH68qaaJOv9D_20rACLcBGAsYHQ/s16000/CS401%2BGDB%2B1%2BSolution%2BSpring%2B2021.webp";
+            }
+
             // put content to textarea
             document.getElementById("content1").value = document.getElementById("content").innerHTML;
 
@@ -321,10 +361,19 @@
             document.getElementById("content1").value = replacecontent.replaceAll("CS401", document.getElementById("namepost").value);
             var newreplacecontent = document.getElementById("content1").value;
             if (img1.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Midterm", "Midterm");
+                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 1");
             }
             if (img2.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Midterm", "Final term");
+                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 2");
+            }
+            if (img3.checked) {
+                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 3");
+            }
+            if (gdb1.checked) {
+                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 1");
+            }
+            if (gdb2.checked) {
+                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 2");
             }
             
              if (document.querySelector(".CodeMirror")) {
