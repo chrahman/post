@@ -1,438 +1,499 @@
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <link rel="stylesheet" href="https://chrahman.github.io/code-editor/css/codemirror.css">
 
-    <style>
-        body {
-            position: relative;
-            width: 90%;
-            margin: 20px auto;
-            border: solid #dee2e6;
-            padding: 20px;
-            border-radius: 3px;
-            transition: all 1s ease;
-            font-family: 'Arial';
-        }
-        /* Dark Theme */
-        body.darktheme {
-        	color:rgb(255, 255, 255);
-            background: rgb(40, 44, 52);
-        }
-        
-        body.darktheme input, body.darktheme textarea, body.darktheme .CodeMirror {
-        	background: rgb(40, 44, 52);
-            border: 2px solid #eee;
-            color:rgb(255, 255, 255);
-            transition: all 0.7s ease;
-        }
-        
-        body.darktheme .dark-btn {
-        	color:rgb(255, 255, 255);
-        }
-        
-        /* Dark Theme end */
-		
-        #content {
-            display: none;
-        }
+  <style>
+    body {
+      position: relative;
+      width: 90%;
+      margin: 20px auto;
+      border: solid #dee2e6;
+      padding: 20px;
+      border-radius: 3px;
+      transition: all 1s ease;
+      font-family: 'Arial';
+    }
 
-        #content1 {
-            width: 100%;
-            resize:none;
-        }
-        
-        input, textarea {
-        	transition: all 1s ease;
-        }
+    /* Dark Theme */
+    body.darktheme {
+      color: rgb(255, 255, 255);
+      background: rgb(40, 44, 52);
+    }
 
-        input:focus,
-        textarea:focus, .CodeMirror-lines:focus {
-            border-color: blue !important;
-            outline: none;
-            transition: all 1s ease;
-        }
-        
-        .dark-btn {
-        	color:black;
-            transition: all 1s ease;
-            float:right;
-            margin-top:-10px;
-        }
-        
-        input[type="text"] {
-            font-size: 16px;
-            padding: 5px 10px;
-            border: 1px solid rgb(118, 118, 118);
-        }
-        
-        @media screen and (max-width:480px) {
-        	body {
-            	border:none;
-                padding:7px;
-                font-family: 'Arial';
-            }
-            input[type="text"] {
-                height: 30px;
-            	border-radius: 30px;
-            	width:-webkit-fill-available;
-                margin-top:5px;
-            }
-            .dark-btn {
-            	margin-top: 15px;
-            }
-        }
-        .CodeMirror {
-        	font-size:13px;
-            border: 1px solid rgb(118, 118, 118);
-            margin-bottom: 5px;            
-        }
-        .cm-s-default .cm-comment {
-            color: #a50;
-        }
-        .cm-s-default .cm-tag, .cm-s-default .cm-bracket {
-            color: #170;
-        }
-        .cm-s-default .cm-attribute {
-            color: #00c;
-        }
-        .cm-s-default .cm-string {
-            color: #a11;
-        }
-        .CodeMirror pre:nth-child(1), .CodeMirror pre:last-child {
-            display: none;
-        }
-        
-    </style>
+    body.darktheme input,
+    body.darktheme textarea,
+    body.darktheme .CodeMirror {
+      background: rgb(40, 44, 52);
+      border: 2px solid #eee;
+      color: rgb(255, 255, 255);
+      transition: all 0.7s ease;
+    }
+
+    body.darktheme .dark-btn {
+      color: rgb(255, 255, 255);
+    }
+
+    /* Dark Theme end */
+
+    #content {
+      display: none;
+    }
+
+    #content1 {
+      width: 100%;
+      resize: none;
+    }
+
+    input,
+    textarea {
+      transition: all 1s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    .CodeMirror-lines:focus {
+      border-color: blue !important;
+      outline: none;
+      transition: all 1s ease;
+    }
+
+    .dark-btn {
+      color: black;
+      transition: all 1s ease;
+      float: right;
+      margin-top: -10px;
+    }
+
+    input[type="text"] {
+      font-size: 16px;
+      padding: 5px 10px;
+      border: 1px solid rgb(118, 118, 118);
+    }
+
+    @media screen and (max-width:480px) {
+      body {
+        border: none;
+        padding: 7px;
+        font-family: 'Arial';
+      }
+
+      input[type="text"] {
+        height: 30px;
+        border-radius: 30px;
+        width: -webkit-fill-available;
+        margin-top: 5px;
+      }
+
+      .dark-btn {
+        margin-top: 15px;
+      }
+    }
+
+    .CodeMirror {
+      font-size: 13px;
+      border: 1px solid rgb(118, 118, 118);
+      margin-bottom: 5px;
+    }
+
+    .cm-s-default .cm-comment {
+      color: #a50;
+    }
+
+    .cm-s-default .cm-tag,
+    .cm-s-default .cm-bracket {
+      color: #170;
+    }
+
+    .cm-s-default .cm-attribute {
+      color: #00c;
+    }
+
+    .cm-s-default .cm-string {
+      color: #a11;
+    }
+
+    .CodeMirror pre:nth-child(1),
+    .CodeMirror pre:last-child {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-<script src="https://chrahman.github.io/code-editor/js/codemirror.js"></script>
+  <script src="https://chrahman.github.io/code-editor/js/codemirror.js"></script>
   <script src="https://chrahman.github.io/code-editor/js/codemirror_jsx.js"></script>
-    <label>Book name</label>
-    <input type="text" id="namepost" placeholder="Like cs201" autocomplete="off">
+  <label>Book name</label>
+  <input type="text" id="namepost" placeholder="Like cs201" autocomplete="off">
 
-<a class="dark-btn" href="javascript:void(0);" onclick="retheme()"  title="Change Theme">
-<svg baseProfile="tiny" fill="currentColor" height="35px" version="1.2" viewBox="0 0 24 24" width="35px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g id="Layer_1">
-            <g>
-              <path d="M12,4c-4.418,0-8,3.582-8,8s3.582,8,8,8s8-3.582,8-8S16.418,4,12,4z M12,18c-3.314,0-6-2.686-6-6s2.686-6,6-6s6,2.686,6,6    S15.314,18,12,18z"></path>
-              <path d="M12,7v10c2.757,0,5-2.243,5-5S14.757,7,12,7z"></path>
-            </g>
-          </g>
-        </svg></a>
-    <br><br>
-    <input type="radio" id="img1" name="img">
-    <label> Assignment 1</label><br>
-    <input type="radio" id="img2" name="img">
-    <label> Assignment 2</label><br>
-    <input type="radio" id="img3" name="img">
-    <label> Assignment 3</label>
-    <br><br>
-    <input type="radio" id="gdb1" name="img">
-    <label> GDB 1</label><br>
-    <input type="radio" id="gdb2" name="img">
-    <label> GDB 2</label>
-    <br><br>
+  <a class="dark-btn" href="javascript:void(0);" onclick="retheme()" title="Change Theme">
+    <svg baseProfile="tiny" fill="currentColor" height="35px" version="1.2" viewBox="0 0 24 24" width="35px"
+      xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g id="Layer_1">
+        <g>
+          <path
+            d="M12,4c-4.418,0-8,3.582-8,8s3.582,8,8,8s8-3.582,8-8S16.418,4,12,4z M12,18c-3.314,0-6-2.686-6-6s2.686-6,6-6s6,2.686,6,6    S15.314,18,12,18z">
+          </path>
+          <path d="M12,7v10c2.757,0,5-2.243,5-5S14.757,7,12,7z"></path>
+        </g>
+      </g>
+    </svg></a>
+  <br><br>
+  <input type="radio" id="img1" name="img">
+  <label> Assignment 1</label><br>
+  <input type="radio" id="img2" name="img">
+  <label> Assignment 2</label><br>
+  <input type="radio" id="img3" name="img">
+  <label> Assignment 3</label>
+  <br><br>
+  <input type="radio" id="gdb1" name="img">
+  <label> GDB 1</label><br>
+  <input type="radio" id="gdb2" name="img">
+  <label> GDB 2</label>
+  <br><br>
 
-    <label> Download Link</label>
-    <input type="text" id="downlink" placeholder="https://mediafire.com/" autocomplete="off">
-    <br><br>
+  <label> Download Link</label>
+  <input type="text" id="downlink" placeholder="https://mediafire.com/" autocomplete="off">
+  <br><br>
 
 
-    <div id="content">
-<!-- Starts post -->
-<div class="separator" style="clear: both; text-align: center;">
-  <br />
-</div>
-<div class="separator" style="clear: both; text-align: center;">
-  <a id="imghref" href="https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s684/CS401%2BAssignment%2B3%2BFall%2B2021.webp" style="margin-left: 1em; margin-right: 1em;">
-    <img id="imgsrc" alt="CS401 Assignment 3 Fall 2021" border="0" data-original-height="318" data-original-width="684" src="https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s16000/CS401%2BAssignment%2B3%2BFall%2B2021.webp" title="CS401 Assignment 3 Fall 2021" />
-  </a>
-</div>
-<br />
-<div class="separator" style="clear: both; text-align: center;">
-  <br />
-</div>
-<h2 style="clear: both; text-align: left;">CS401 Assignment 3 Solution Fall 2021</h2>
-<div>In this Post, I have CS401 Assignment 3 Solution Fall 2021.&nbsp; <span face="Poppins, sans-serif" style="background-color: white; font-size: 15px;">Download CS401 <a id="cs_gd_no" href="https://www.vudaily.com/2021/07/it430-assignment-3-solution-spring-2021.html" target="_blank"> Assignment Solution</a> File From Here. Download Moaaz past papers and Waqar's past papers from our website. You can Download all <a id="cs_gd_notes" href="https://www.vudaily.com/search/label/Assignment-Solution-2021?&amp;max-results=5" rel="nofollow" target="_blank">assignment solutions</a> from our website. </span>
-</div>
-<div>
-  <br />
-</div>
-<div class="hadipapers" style="width: 97%;">
-  <div class="hadipapersh1">
-    <h1 style="color: white;">Join Our Social Media Groups</h1>
-  </div>
-  <div class="hadipapersp hadics">
-    <p>
-      <a href="https://web.facebook.com/groups/3405642262994944" style="transition: all 0.5s ease 0s;">
-        <i class="fa fa-facebook" style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 13px;"></i>Join Facebook Group
-      </a>
-    </p>
-    <p>
-      <a href="https://chat.whatsapp.com/EHu76WHLA0g89IRnKhRs3E" style="transition: all 0.5s ease 0s;">
-        <i class="fa fa-whatsapp" style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join Whatsapp Group
-      </a>
-    </p>
-    <p>
-      <a href="https://chat.whatsapp.com/IAjIe74NlsA6ImpAcFrZCG" style="transition: all 0.5s ease 0s;">
-        <i class="fa fa-whatsapp" style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join 2 Whatsapp Group
-      </a>
-    </p>
-    <p>
-      <a href="https://t.me/vudailygroup" style="transition: all 0.5s ease 0s;">
-        <i class="fa fa-telegram" style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join Telegram Group 
-      </a>
-    </p>
-  </div>
-</div>
-<div class="button__holder" style="margin-top: 25px; text-align: center;">
-  <a id="downlinkput" href="https://www.mediafire.com/file/uv1ohdwqgfp3683/cs401+Assignmnt+3.docx/file" rel="nofollow" target="_blank">
-    <button class="plus">
-      <i class="fa fa-download" style="color: white;"></i>Download </button>
-  </a>
-</div>
-<!--Posts ad-->
-<ins class="adsbygoogle" data-ad-client="ca-pub-7297866338073995" data-ad-format="fluid" data-ad-layout="in-article" data-ad-slot="3456488220" style="display: block; text-align: center;"></ins>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<div>
-  <p style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;"></p>
-  <blockquote>Don't Copy-paste The Same Answer Please Make Some Changes Within The Solution File. You Have Got To Form Your Solution File By Yourself Because Everyone Cannot Submit Same Solution File Kindly Make Some Changes Otherwise Are Mark Zero. So Please Make Some Changes Within The Solution File.</blockquote>
-  <p></p>
-  <p style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;"></p>
-</div>
-<div>We Are Here To Supply Latest Virtual University Solutions. Assignment Solutions, GDB Solution, Quiz Solution Viva Solution Midterm Past Papers, and Final term Past Papers. <br />
-</div>
-<div>
-  <br />
-</div>
-<div>
-  <div>
-    <p>CS401 Assignment 3 Solution 2021</p>
-    <p>CS401 Assignment 3 Solution 2021 download</p>
-    <p>CS401 Assignment 3 fall 2021</p>
-  </div>
-</div>
-<style>
-  .button__holder {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .plus {
-    position: relative;
-    z-index: 1;
-    width: 181px;
-    height: 46px;
-    cursor: pointer;
-    color: white;
-    background: #ed1c5b;
-    border: none;
-    transition: box-shadow 400ms cubic-bezier(.2, 0, .7, 1), transform 200ms cubic-bezier(.2, 0, .7, 1);
-    background-image: linear-gradient(45deg, #1151b7 0, #c300be 100%);
-    text-align: center;
-    font-size: 21px;
-    text-transform: uppercase;
-    outline: none;
-  }
-
-  .what {
-    height: 60px;
-  }
-
-  .plus:hover {
-    box-shadow: 0 0 1px 3px rgba(225, 225, 255, 1), 0 0 1px 8px rgba(133, 127, 220, 1), 0 0 1px 14px rgba(182, 179, 213, 1)
-  }
-
-  .hadipapers {
-    width: 90%;
-    margin-left: 2%;
-    margin-bottom: 5px;
-    border: 1px solid black;
-    float: left;
-    height: auto;
-  }
-
-  .hadipapersh1 {
-    height: 60px;
-    background: blueviolet;
-    color: white;
-    padding-top: 2px;
-    padding-bottom: 10px;
-    border-bottom: 2px dashed #f1f1f1;
-    width: 100%;
-  }
-
-  .hadipapersh1 h1 {
-    text-align: center;
-    padding-bottom: 18px;
-  }
-
-  .hadipapersp {
-    width: 100%;
-  }
-
-  .hadics p {
-    font-size: 19px;
-    border-left: 4px solid transparent;
-    transition: 0.5s ease;
-    padding: 6px;
-    margin: 20px;
-    border-bottom: 1px solid black;
-  }
-
-  .hadipapersp a:hover {
-    color: blueviolet;
-    margin-left: 6px;
-    font-weight: bold;
-  }
-</style>
-<!-- End post -->
+  <div id="content">
+    <!-- Starts post -->
+    <div class="separator" style="clear: both; text-align: center;">
+      <br />
     </div>
-    <textarea rows="22" id="content1" placeholder="Genrate post and click on Copy" readonly></textarea>
-    <button type="button" onclick="callme()">Generate</button>
-    <button type="button" onclick="copy()">Copy</button>
-
+    <div class="separator" style="clear: both; text-align: center;">
+      <a id="imghref"
+        href="https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s684/CS401%2BAssignment%2B3%2BFall%2B2021.webp"
+        style="margin-left: 1em; margin-right: 1em;">
+        <img id="imgsrc" alt="CS401 Assignment 3 Fall 2021" border="0" data-original-height="318"
+          data-original-width="684"
+          src="https://1.bp.blogspot.com/-1Pbp1dbJgf0/YO6lO81icVI/AAAAAAAACxQ/3QJxpy2VRrwmSHvPjDi6YjWssm78HWH1QCLcBGAsYHQ/s16000/CS401%2BAssignment%2B3%2BFall%2B2021.webp"
+          title="CS401 Assignment 3 Fall 2021" />
+      </a>
+    </div>
+    <br />
+    <div class="separator" style="clear: both; text-align: center;">
+      <br />
+    </div>
+    <h2 style="clear: both; text-align: left;">CS401 Assignment 3 Solution Fall 2021</h2>
+    <div>In this Post, I have CS401 Assignment 3 Solution Fall 2021.&nbsp; <span face="Poppins, sans-serif"
+        style="background-color: white; font-size: 15px;">Download CS401 <a id="cs_gd_no"
+          href="https://www.vudaily.com/2021/07/it430-assignment-3-solution-spring-2021.html" target="_blank">
+          Assignment Solution</a> File From Here. Download Moaaz past papers and Waqar's past papers from our website.
+        You can Download all <a id="cs_gd_notes"
+          href="https://www.vudaily.com/search/label/Assignment-Solution-2021?&amp;max-results=5" rel="nofollow"
+          target="_blank">assignment solutions</a> from our website. </span>
+    </div>
+    <div>
+      <br />
+    </div>
+    <div class="hadipapers" style="width: 97%;">
+      <div class="hadipapersh1">
+        <h1 style="color: white;">Join Our Social Media Groups</h1>
+      </div>
+      <div class="hadipapersp hadics">
+        <p>
+          <a href="https://web.facebook.com/groups/3405642262994944" style="transition: all 0.5s ease 0s;">
+            <i class="fa fa-facebook"
+              style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 13px;"></i>Join
+            Facebook Group
+          </a>
+        </p>
+        <p>
+          <a href="https://chat.whatsapp.com/EHu76WHLA0g89IRnKhRs3E" style="transition: all 0.5s ease 0s;">
+            <i class="fa fa-whatsapp"
+              style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join
+            Whatsapp Group
+          </a>
+        </p>
+        <p>
+          <a href="https://chat.whatsapp.com/IAjIe74NlsA6ImpAcFrZCG" style="transition: all 0.5s ease 0s;">
+            <i class="fa fa-whatsapp"
+              style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join
+            2 Whatsapp Group
+          </a>
+        </p>
+        <p>
+          <a href="https://t.me/vudailygroup" style="transition: all 0.5s ease 0s;">
+            <i class="fa fa-telegram"
+              style="background: blueviolet; color: white; font-size: 23px; margin-right: 20px; padding: 10px;"></i>Join
+            Telegram Group
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="button__holder" style="margin-top: 25px; text-align: center;">
+      <a id="downlinkput" href="https://www.mediafire.com/file/uv1ohdwqgfp3683/cs401+Assignmnt+3.docx/file"
+        rel="nofollow" target="_blank">
+        <button class="plus">
+          <i class="fa fa-download" style="color: white;"></i>Download </button>
+      </a>
+    </div>
+    <!--Posts ad-->
+    <ins class="adsbygoogle" data-ad-client="ca-pub-7297866338073995" data-ad-format="fluid" data-ad-layout="in-article"
+      data-ad-slot="3456488220" style="display: block; text-align: center;"></ins>
     <script>
-        var downlink = document.getElementById("downlink");
-        var downlinkput = document.getElementById("downlinkput");
-        var imgsrc = document.getElementById("imgsrc");
-        var imghref = document.getElementById("imghref");
-
-        var img1 = document.getElementById("img1");
-        var img2 = document.getElementById("img2");
-        var img3 = document.getElementById("img3");
-        var gdb1 = document.getElementById("gdb1");
-        var gdb2 = document.getElementById("gdb2");
-
-        function myFunction() {
-            // replace download link
-            document.getElementById("downlinkput").href = downlink.value;
-            // Change you can download
-            if (gdb1.checked || gdb2.checked) {
-            	document.getElementById("cs_gd_notes").href = "/search/label/GDB-Solution-2021?&amp;max-results=5";
-                document.getElementById("cs_gd_notes").innerHTML = "GDB Solutions";
-                document.getElementById("cs_gd_no").innerHTML = "GDB Solution";
-                
-            }
-            else {
-            	document.getElementById("cs_gd_notes").href = "/search/label/Assignment-Solution-2021?&amp;max-results=5";
-                document.getElementById("cs_gd_notes").innerHTML = "Assignment Solutions";
-                document.getElementById("cs_gd_no").innerHTML = "Assignment Solution";
-            }
-
-            // check and change img
-            if (img1.checked) {
-                imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEicQ6SW6mVsyb0sgQniy0xTM2Eq08CQ4RHDBZYbTAX9dQxVwZ8EVVTKg-AUInzi52PyTzNqgYNRuTHD7yoO0SyPEUucSIoDr_0KPRY8pPcZXsO_xo8VpGiCNZmL65Afpa5kDjG3a80K9xxelf_WxmOiTg73aXGawZYVjqXgTgOI92oGra7wlsXEM67Vyg";
-                imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEicQ6SW6mVsyb0sgQniy0xTM2Eq08CQ4RHDBZYbTAX9dQxVwZ8EVVTKg-AUInzi52PyTzNqgYNRuTHD7yoO0SyPEUucSIoDr_0KPRY8pPcZXsO_xo8VpGiCNZmL65Afpa5kDjG3a80K9xxelf_WxmOiTg73aXGawZYVjqXgTgOI92oGra7wlsXEM67Vyg";
-            }
-            if (img2.checked) {
-                imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEjUsHMawjWiZjET8FjMDGCnI3RuNnv-VbT7JQ_4FfZ9vAxf1H9IeT9xctbtp_6cX4ILotVhfuYkOnxltN7Agc9yl-bNEgHOb_MWmrZ12GRRa3DTLUxSq760F2OfTqOLc-DzIu7McasG9eNrBUg4TJbyehduTm0K1hK6ss1o_Mr33YQ8pg39Si3CdHPYTQ";
-                imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEjUsHMawjWiZjET8FjMDGCnI3RuNnv-VbT7JQ_4FfZ9vAxf1H9IeT9xctbtp_6cX4ILotVhfuYkOnxltN7Agc9yl-bNEgHOb_MWmrZ12GRRa3DTLUxSq760F2OfTqOLc-DzIu7McasG9eNrBUg4TJbyehduTm0K1hK6ss1o_Mr33YQ8pg39Si3CdHPYTQ";
-            }
-            if (img3.checked) {
-                imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEgwSmQwOhI8RFOU5aVcJh1BLADseg9_M766w6TKltifL6LhFWQOPmMthTzjZ-6DlSjfk1McsUoSzjI8DyRpYcXxgLejCCPG5E_WkvlxHLvkkdOT44Dc4SzkJRkbBPCvINLSZTTgEVfo-lJeaJwHpVq0ScOKWwLazLzBMQp5EMGnyzfF-gi0XjoJ8g3krg";
-                imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEgwSmQwOhI8RFOU5aVcJh1BLADseg9_M766w6TKltifL6LhFWQOPmMthTzjZ-6DlSjfk1McsUoSzjI8DyRpYcXxgLejCCPG5E_WkvlxHLvkkdOT44Dc4SzkJRkbBPCvINLSZTTgEVfo-lJeaJwHpVq0ScOKWwLazLzBMQp5EMGnyzfF-gi0XjoJ8g3krg";
-            }
-            if (gdb1.checked) {
-                imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEh8ATbqOG9X1dlszFXeID_uYQpCltVkHeJEXYyYmNOKfgLXbLa7Fz6h6ReDzJF4PnBqmWKmpvQlgBRXFvdXMKgufiIUb_Gc8CMZePv1Jw5yq6PAJUIG49B-lmvEzejmudQyuxSQ5umxl9zEstOM47nTmKF1bNIlqxPLga9Yu7LzIHyqRouz2gxC0eGl1Q";
-                imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEh8ATbqOG9X1dlszFXeID_uYQpCltVkHeJEXYyYmNOKfgLXbLa7Fz6h6ReDzJF4PnBqmWKmpvQlgBRXFvdXMKgufiIUb_Gc8CMZePv1Jw5yq6PAJUIG49B-lmvEzejmudQyuxSQ5umxl9zEstOM47nTmKF1bNIlqxPLga9Yu7LzIHyqRouz2gxC0eGl1Q";
-            }
-            if (gdb2.checked) {
-                imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEghBNPeiW29pcAapuJgJVZAkxs1c-IvGMwOm7dTwDhrqfJgEDu-1xPwcemLSi1g78hUD2o_u6AQJVL4s_nv22PS7q1Mq2uVUOGUb00KOPH9yZOYjWlGDeqiWWW3k4yXkQpabQt7LIWIRfkvx905CzVxUEpSbLP-S5obccz65D6D0Zmsfqeonq0ifa6Jlg";
-                imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEghBNPeiW29pcAapuJgJVZAkxs1c-IvGMwOm7dTwDhrqfJgEDu-1xPwcemLSi1g78hUD2o_u6AQJVL4s_nv22PS7q1Mq2uVUOGUb00KOPH9yZOYjWlGDeqiWWW3k4yXkQpabQt7LIWIRfkvx905CzVxUEpSbLP-S5obccz65D6D0Zmsfqeonq0ifa6Jlg";
-            }
-
-            // put content to textarea
-            document.getElementById("content1").value = document.getElementById("content").innerHTML;
-
-            // replace name
-            var replacecontent = document.getElementById("content1").value;
-            document.getElementById("content1").value = replacecontent.replaceAll("CS401", document.getElementById("namepost").value);
-            var newreplacecontent = document.getElementById("content1").value;
-            if (img1.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 1");
-            }
-            if (img2.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 2");
-            }
-            if (img3.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 3");
-            }
-            if (gdb1.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 1");
-            }
-            if (gdb2.checked) {
-                document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 2");
-            }
-            
-             if (document.querySelector(".CodeMirror")) {
-             	document.querySelector(".CodeMirror").remove();
-             }
-            function colorcoding() {
-             window.editor = CodeMirror.fromTextArea(document.getElementById("content1"), {               
-               mode: "text/html",
-               htmlMode: true,
-               lineWrapping: false,
-               smartIndent: true,
-               autoComplete: true,
-               readOnly: false,
-               addModeClass: true,
-             });
-             //  window.editor.on("change", function () {window.editor.save();});
-           }
-           colorcoding();
-        }
-
-        function copy() {
-        	if (document.querySelector(".CodeMirror")) {
-               editor.execCommand('selectAll');
-               editor.focus();
-               document.execCommand('copy');
-            }
-            else {
-            	alert("Please Generate your post first");
-            }
-        }
-
-        function callme() {
-            myFunction();
-        }
-        
-        // dark theme starts here
-        
-   function retheme() {
-     var cc = document.body.className;
-     if (cc.indexOf("darktheme") > -1) {
-       document.body.className = cc.replace("darktheme", "");
-       if (opener) { opener.document.body.className = cc.replace("darktheme", ""); }
-       localStorage.setItem("preferredmode", "light");
-     } else {
-       document.body.className += " darktheme";
-       if (opener) { opener.document.body.className += "darktheme"; }
-       localStorage.setItem("preferredmode", "dark");
-     }
-   }
-   (
-     function setThemeMode() {
-       var x = localStorage.getItem("preferredmode");
-       if (x == "dark") {
-         document.body.className += "darktheme";
-       }
-     })();
+      (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    
+    <div>
+      <p
+        style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;">
+      </p>
+      <blockquote>Don't Copy-paste The Same Answer Please Make Some Changes Within The Solution File. You Have Got To
+        Form Your Solution File By Yourself Because Everyone Cannot Submit Same Solution File Kindly Make Some Changes
+        Otherwise Are Mark Zero. So Please Make Some Changes Within The Solution File.</blockquote>
+      <p></p>
+      <p
+        style="color: #333333; font-family: &quot;noto serif&quot;, serif; font-size: 18px; line-height: 30px; margin-bottom: 20px; margin-top: 20px;">
+      </p>
+    </div>
+    <div>We Are Here To Supply Latest Virtual University Solutions. Assignment Solutions, GDB Solution, Quiz Solution
+      Viva Solution Midterm Past Papers, and Final term Past Papers. <br />
+    </div>
+    <div>
+      <br />
+    </div>
+    <div>
+      <div>
+        <p>CS401 Assignment 3 Solution 2022</p>
+        <p>CS401 Assignment 3 Solution 2021 download</p>
+        <p>CS401 Assignment 3 fall 2021</p>
+      </div>
+    </div>
+    <style>
+      .button__holder {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .plus {
+        position: relative;
+        z-index: 1;
+        width: 181px;
+        height: 46px;
+        cursor: pointer;
+        color: white;
+        background: #ed1c5b;
+        border: none;
+        transition: box-shadow 400ms cubic-bezier(.2, 0, .7, 1), transform 200ms cubic-bezier(.2, 0, .7, 1);
+        background-image: linear-gradient(45deg, #1151b7 0, #c300be 100%);
+        text-align: center;
+        font-size: 21px;
+        text-transform: uppercase;
+        outline: none;
+      }
+
+      .what {
+        height: 60px;
+      }
+
+      .plus:hover {
+        box-shadow: 0 0 1px 3px rgba(225, 225, 255, 1), 0 0 1px 8px rgba(133, 127, 220, 1), 0 0 1px 14px rgba(182, 179, 213, 1)
+      }
+
+      .hadipapers {
+        width: 90%;
+        margin-left: 2%;
+        margin-bottom: 5px;
+        border: 1px solid black;
+        float: left;
+        height: auto;
+      }
+
+      .hadipapersh1 {
+        height: 60px;
+        background: blueviolet;
+        color: white;
+        padding-top: 2px;
+        padding-bottom: 10px;
+        border-bottom: 2px dashed #f1f1f1;
+        width: 100%;
+      }
+
+      .hadipapersh1 h1 {
+        text-align: center;
+        padding-bottom: 18px;
+      }
+
+      .hadipapersp {
+        width: 100%;
+      }
+
+      .hadics p {
+        font-size: 19px;
+        border-left: 4px solid transparent;
+        transition: 0.5s ease;
+        padding: 6px;
+        margin: 20px;
+        border-bottom: 1px solid black;
+      }
+
+      .hadipapersp a:hover {
+        color: blueviolet;
+        margin-left: 6px;
+        font-weight: bold;
+      }
+    </style>
+    <!-- End post -->
+  </div>
+  <textarea rows="22" id="content1" placeholder="Genrate post and click on Copy" readonly></textarea>
+  <button type="button" onclick="callme()">Generate</button>
+  <button type="button" onclick="copy(event)">Copy</button>
+
+  <script>
+    var downlink = document.getElementById("downlink");
+    var downlinkput = document.getElementById("downlinkput");
+    var imgsrc = document.getElementById("imgsrc");
+    var imghref = document.getElementById("imghref");
+
+    var img1 = document.getElementById("img1");
+    var img2 = document.getElementById("img2");
+    var img3 = document.getElementById("img3");
+    var gdb1 = document.getElementById("gdb1");
+    var gdb2 = document.getElementById("gdb2");
+
+    function myFunction() {
+      document.getElementsByClassName("button__holder")[0].innerHTML = `
+        <a id="downlinkput" href="https://www.mediafire.com/file/uv1ohdwqgfp3683/cs401+Assignmnt+3.docx/file"
+          rel="nofollow" target="_blank">
+          <button class="plus">
+            <i class="fa fa-download" style="color: white;"></i>Download </button>
+        </a>
+        `;
+      // replace download link
+      let downlinkput = document.getElementById("downlinkput");
+      if (downlink.value === "") {
+        // downlinkput.parentNodes[1].classList.remove("plus");
+        downlinkput.outerHTML = `<h3 style="color:red">Keep visit this page. Solution file will be upload soon!</h3>`;
+      }
+      else {
+        document.getElementById("downlinkput").href = downlink.value;
+      }
+      // Change you can download
+      if (gdb1.checked || gdb2.checked) {
+        document.getElementById("cs_gd_notes").href = "/search/label/GDB-Solution-2022?&amp;max-results=5";
+        document.getElementById("cs_gd_notes").innerHTML = "GDB Solutions";
+        document.getElementById("cs_gd_no").innerHTML = "GDB Solution";
+
+      }
+      else {
+        document.getElementById("cs_gd_notes").href = "/search/label/Assignment-Solution-2022?&amp;max-results=5";
+        document.getElementById("cs_gd_notes").innerHTML = "Assignment Solutions";
+        document.getElementById("cs_gd_no").innerHTML = "Assignment Solution";
+      }
+
+      // check and change img
+      if (img1.checked) {
+        imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEicQ6SW6mVsyb0sgQniy0xTM2Eq08CQ4RHDBZYbTAX9dQxVwZ8EVVTKg-AUInzi52PyTzNqgYNRuTHD7yoO0SyPEUucSIoDr_0KPRY8pPcZXsO_xo8VpGiCNZmL65Afpa5kDjG3a80K9xxelf_WxmOiTg73aXGawZYVjqXgTgOI92oGra7wlsXEM67Vyg";
+        imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEicQ6SW6mVsyb0sgQniy0xTM2Eq08CQ4RHDBZYbTAX9dQxVwZ8EVVTKg-AUInzi52PyTzNqgYNRuTHD7yoO0SyPEUucSIoDr_0KPRY8pPcZXsO_xo8VpGiCNZmL65Afpa5kDjG3a80K9xxelf_WxmOiTg73aXGawZYVjqXgTgOI92oGra7wlsXEM67Vyg";
+      }
+      if (img2.checked) {
+        imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEjUsHMawjWiZjET8FjMDGCnI3RuNnv-VbT7JQ_4FfZ9vAxf1H9IeT9xctbtp_6cX4ILotVhfuYkOnxltN7Agc9yl-bNEgHOb_MWmrZ12GRRa3DTLUxSq760F2OfTqOLc-DzIu7McasG9eNrBUg4TJbyehduTm0K1hK6ss1o_Mr33YQ8pg39Si3CdHPYTQ";
+        imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEjUsHMawjWiZjET8FjMDGCnI3RuNnv-VbT7JQ_4FfZ9vAxf1H9IeT9xctbtp_6cX4ILotVhfuYkOnxltN7Agc9yl-bNEgHOb_MWmrZ12GRRa3DTLUxSq760F2OfTqOLc-DzIu7McasG9eNrBUg4TJbyehduTm0K1hK6ss1o_Mr33YQ8pg39Si3CdHPYTQ";
+      }
+      if (img3.checked) {
+        imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEgwSmQwOhI8RFOU5aVcJh1BLADseg9_M766w6TKltifL6LhFWQOPmMthTzjZ-6DlSjfk1McsUoSzjI8DyRpYcXxgLejCCPG5E_WkvlxHLvkkdOT44Dc4SzkJRkbBPCvINLSZTTgEVfo-lJeaJwHpVq0ScOKWwLazLzBMQp5EMGnyzfF-gi0XjoJ8g3krg";
+        imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEgwSmQwOhI8RFOU5aVcJh1BLADseg9_M766w6TKltifL6LhFWQOPmMthTzjZ-6DlSjfk1McsUoSzjI8DyRpYcXxgLejCCPG5E_WkvlxHLvkkdOT44Dc4SzkJRkbBPCvINLSZTTgEVfo-lJeaJwHpVq0ScOKWwLazLzBMQp5EMGnyzfF-gi0XjoJ8g3krg";
+      }
+      if (gdb1.checked) {
+        imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEh8ATbqOG9X1dlszFXeID_uYQpCltVkHeJEXYyYmNOKfgLXbLa7Fz6h6ReDzJF4PnBqmWKmpvQlgBRXFvdXMKgufiIUb_Gc8CMZePv1Jw5yq6PAJUIG49B-lmvEzejmudQyuxSQ5umxl9zEstOM47nTmKF1bNIlqxPLga9Yu7LzIHyqRouz2gxC0eGl1Q";
+        imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEh8ATbqOG9X1dlszFXeID_uYQpCltVkHeJEXYyYmNOKfgLXbLa7Fz6h6ReDzJF4PnBqmWKmpvQlgBRXFvdXMKgufiIUb_Gc8CMZePv1Jw5yq6PAJUIG49B-lmvEzejmudQyuxSQ5umxl9zEstOM47nTmKF1bNIlqxPLga9Yu7LzIHyqRouz2gxC0eGl1Q";
+      }
+      if (gdb2.checked) {
+        imgsrc.src = "https://blogger.googleusercontent.com/img/a/AVvXsEghBNPeiW29pcAapuJgJVZAkxs1c-IvGMwOm7dTwDhrqfJgEDu-1xPwcemLSi1g78hUD2o_u6AQJVL4s_nv22PS7q1Mq2uVUOGUb00KOPH9yZOYjWlGDeqiWWW3k4yXkQpabQt7LIWIRfkvx905CzVxUEpSbLP-S5obccz65D6D0Zmsfqeonq0ifa6Jlg";
+        imghref.href = "https://blogger.googleusercontent.com/img/a/AVvXsEghBNPeiW29pcAapuJgJVZAkxs1c-IvGMwOm7dTwDhrqfJgEDu-1xPwcemLSi1g78hUD2o_u6AQJVL4s_nv22PS7q1Mq2uVUOGUb00KOPH9yZOYjWlGDeqiWWW3k4yXkQpabQt7LIWIRfkvx905CzVxUEpSbLP-S5obccz65D6D0Zmsfqeonq0ifa6Jlg";
+      }
+
+      // put content to textarea
+      document.getElementById("content1").value = document.getElementById("content").innerHTML;
+
+      // replace name
+      var replacecontent = document.getElementById("content1").value;
+      document.getElementById("content1").value = replacecontent.replaceAll("CS401", document.getElementById("namepost").value);
+      var newreplacecontent = document.getElementById("content1").value;
+      if (img1.checked) {
+        document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 1");
+      }
+      if (img2.checked) {
+        document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 2");
+      }
+      if (img3.checked) {
+        document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "Assignment 3");
+      }
+      if (gdb1.checked) {
+        document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 1");
+      }
+      if (gdb2.checked) {
+        document.getElementById("content1").value = newreplacecontent.replaceAll("Assignment 3", "GDB 2");
+      }
+
+      if (document.querySelector(".CodeMirror")) {
+        document.querySelector(".CodeMirror").remove();
+      }
+      function colorcoding() {
+        window.editor = CodeMirror.fromTextArea(document.getElementById("content1"), {
+          mode: "text/html",
+          htmlMode: true,
+          lineWrapping: false,
+          smartIndent: true,
+          autoComplete: true,
+          readOnly: false,
+          addModeClass: true,
+        });
+        //  window.editor.on("change", function () {window.editor.save();});
+      }
+      colorcoding();
+    }
+
+    function copy(event) {
+      if (document.querySelector(".CodeMirror")) {
+        editor.execCommand('selectAll');
+        editor.focus();
+        document.execCommand('copy');
+        event.target.innerHTML = "Copied"
+        setTimeout(() => {
+          event.target.innerHTML = "Copy"
+        }, 1500);
+      }
+      else {
+        alert("Please Generate your post first");
+      }
+    }
+
+    function callme() {
+      myFunction();
+    }
+
+    // dark theme starts here
+
+    function retheme() {
+      var cc = document.body.className;
+      if (cc.indexOf("darktheme") > -1) {
+        document.body.className = cc.replace("darktheme", "");
+        if (opener) { opener.document.body.className = cc.replace("darktheme", ""); }
+        localStorage.setItem("preferredmode", "light");
+      } else {
+        document.body.className += " darktheme";
+        if (opener) { opener.document.body.className += "darktheme"; }
+        localStorage.setItem("preferredmode", "dark");
+      }
+    }
+    (
+      function setThemeMode() {
+        var x = localStorage.getItem("preferredmode");
+        if (x == "dark") {
+          document.body.className += "darktheme";
+        }
+      })();
+  </script>
+
 </body>
 
 </html>
